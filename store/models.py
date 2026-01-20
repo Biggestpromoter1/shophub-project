@@ -19,6 +19,7 @@ class Product(models.Model):
         Category,
         on_delete=models.CASCADE,
         related_name='products',
+        null=True,
     )
     price = models.DecimalField(max_digits=10, decimal_places=2)
     stock = models.IntegerField(default=0)
