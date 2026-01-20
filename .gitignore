@@ -47,11 +47,11 @@ __pypackages__/
 *.log
 *.pot
 local_settings.py
-db.sqlite3
 media/
 static/
 staticfiles/
 prod_*/
+db.sqlite3
 
 # Testing / Coverage
 htmlcov/
