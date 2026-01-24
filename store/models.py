@@ -3,6 +3,7 @@ from django.db import models
 class Category(models.Model):
     """Product categories"""
     name = models.CharField(max_length=200, unique=True)
+    slug = models.SlugField(max_length=200, unique=True, null=True)
     description = models.TextField(blank=True)
     created_at = models.DateTimeField(auto_now_add=True)
 
@@ -15,6 +16,7 @@ class Product(models.Model):
 
     name = models.CharField(max_length=200)
     description = models.TextField()
+    slug = models.SlugField(max_length=200, unique=True, null=True)
     category = models.ForeignKey(
         Category,
         on_delete=models.CASCADE,
