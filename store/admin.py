@@ -1,23 +1,29 @@
 from django.contrib import admin
-from .models import Product, Category
+from .models import Product, Category, Brand
+
 
 @admin.register(Category)
 class CategoryAdmin(admin.ModelAdmin):
-    """Category admin interface"""
+    list_display = ("name", "created_at")
+    search_fields = ("name",)
 
-    list_display = ["name", "created_at"]
+
+@admin.register(Brand)
+class BrandAdmin(admin.ModelAdmin):
+    list_display = ("name",)
+    prepopulated_fields = {"slug": ("name",)}
+
 
 @admin.register(Product)
 class ProductAdmin(admin.ModelAdmin):
-    """Product admin interface"""
-
-    list_display = [
+    list_display = (
         "name",
         "category",
+        "brand",
         "price",
         "stock",
         "available",
         "created_at",
-    ]
-    list_filter = ["available", "category", "created_at"]
-    search_fields = ["name", "description"]
+    )
+    list_filter = ("available", "category", "brand", "created_at")
+    search_fields = ("name", "description")
