@@ -51,3 +51,11 @@ def product_detail(request, slug):
         'title': product.name
     }
     return render(request, 'store/product_detail.html', context)
+def search(request):
+    query = request.GET.get('q')
+    products = Product.objects.filter(name__icontains=query)
+
+    return render(request, 'store/search.html', {
+        'products': products,
+        'query': query,
+    })

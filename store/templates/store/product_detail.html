@@ -45,6 +45,12 @@
             </div>
         </div>
     </div>
+    <li class="list-group-item d-flex justify-content-between">
+    {{ category.name }}
+    <span class="badge bg-primary">
+        {{ category.product_count }}
+    </span>
+</li>
     {% endfor %}
 </div>
 {% endif %}
