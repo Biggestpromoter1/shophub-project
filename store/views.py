@@ -53,7 +53,7 @@ def product_detail(request, slug):
     # Get related products from same category
     related_products = Product.objects.filter(
         category=product.category, available=True
-    ).exclude(id=product.id)[:4]
+    ).exclude(id=product.id)[:4] # type:ignore
 
     context = {
         "product": product,
